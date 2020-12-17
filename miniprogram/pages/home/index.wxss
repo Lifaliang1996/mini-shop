@@ -1,0 +1,48 @@
+#swiper {
+  width: 750rpx;
+  height: 340rpx;
+}
+#swiper image {
+  width: 100%;
+  height: 100%;
+}
+#cates {
+  display: flex;
+  align-items: center;
+  height: 180rpx;
+  padding: 15rpx;
+}
+#cates image {
+  flex: 1;
+  height: 100%;
+}
+#floor-list {
+  width: 750rpx;
+  margin-top: 30rpx;
+}
+#floor-list .floor {
+  width: 100%;
+  padding: 10rpx;
+}
+#floor-list .floor .floor-title {
+  width: 100%;
+}
+#floor-list .floor .product-list {
+  width: 100%;
+  height: 386rpx;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10rpx;
+}
+#floor-list .floor .product-list .product {
+  width: 100%;
+  height: 100%;
+}
+#floor-list .floor .product-list .product:nth-child(1) {
+  grid-row: 1 / 3;
+}
+#floor-list .floor .product-list .product image {
+  width: 100%;
+  height: 100%;
+}

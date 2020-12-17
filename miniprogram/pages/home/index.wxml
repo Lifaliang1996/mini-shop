@@ -1,0 +1,51 @@
+<!-- 轮播图 -->
+<swiper
+ id="swiper"
+ indicator-dots
+ circular
+ autoplay
+>
+	<block wx:for="{{swiperList}}" wx:key="index">
+		<swiper-item item-id="{{index}}">
+			<navigator url="{{'/pages/goods_detail/index?goods_id=' + item.goods_id}}">
+				<image mode="widthFix" src="{{item.image_src}}" />
+			</navigator>
+		</swiper-item>
+	</block>
+</swiper>
+
+<!-- 快速导航 -->
+<navigator id="cates" open-type="switchTab" url="/pages/category/index">
+	<block wx:for="{{cateList}}" wx:key="index">
+		<image mode="aspectFit" src="{{item.image_src}}" />
+	</block>
+</navigator>
+
+<!-- 楼层卡片 -->
+<view id="floor-list">
+	<view
+	 class="floor"
+	 wx:for="{{floorList}}"
+	 wx:for-item="floor"
+	 wx:for-index="floorIndex"
+	 wx:key="floorIndex"
+	>
+		<view class="floor-title">
+			<image mode="widthFix" src="{{floor.floor_title.image_src}}" />
+		</view>
+		<view class="product-list">
+			<block
+			 wx:for="{{floor.product_list}}"
+			 wx:for-item="product"
+			 wx:for-index="productIndex"
+			 wx:key="productIndex"
+			>
+				<navigator class="product" url="{{'/pages/goods_detail/index?query=' + product.navigator_url}}">
+					<image mode="scaleToFill" src="{{product.image_src}}" />
+				</navigator>
+			</block>
+		</view>
+	</view>
+</view>
+
+
