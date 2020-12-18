@@ -1,0 +1,30 @@
+<ct-sort-bar bind:change="handleChange" />
+<scroll-view
+  id="goods-list"
+  enable-back-to-top
+  scroll-y
+  refresher-enabled
+  scroll-top="{{ scrollTop }}"
+  refresher-triggered="{{ isRefreshing }}"
+  bind:refresherrefresh="refreshGoodsList"
+  bind:scrolltolower="getMoreGoodsList"
+>
+  <navigator
+    class="goods-item"
+    wx:for="{{ goodsList }}"
+    wx:for-item="goods"
+    wx:key="goods_id"
+    url="/pages/goods-detail/index"
+  >
+    <van-image
+      class="img"
+      fit="contain"
+      src="{{ goods.goods_small_logo }}"
+    />
+    <view class="info">
+      <view class="title">{{ goods.goods_name }}</view>
+      <view class="price">￥{{ goods.goods_price }}</view>
+    </view>
+  </navigator>
+</scroll-view>
+

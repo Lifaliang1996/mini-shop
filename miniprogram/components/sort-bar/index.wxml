@@ -1,0 +1,26 @@
+<view class="sort-bar">
+  <view
+    class="sort-item {{ type === 0 ? 'active' : '' }}"
+    bind:tap="changeType"
+    data-type="{{ 0 }}"
+  >综合
+  </view>
+  <view
+    class="sort-item {{ type === 1 ? 'active' : '' }}"
+    bind:tap="changeType"
+    data-type="{{ 1 }}"
+  >销量
+  </view>
+  <view
+    class="sort-item price {{ type >= 2 ? 'active' : '' }}"
+    bind:tap="changeType"
+    data-type="{{ 2 }}"
+  >
+    <text>价格</text>
+    <view class="arrow">
+      <van-icon name="arrow-up" wx:if="{{ type === 2 || type < 2 }}" />
+      <van-icon name="arrow-down" wx:if="{{ type === 3 || type < 2 }}" />
+    </view>
+  </view>
+</view>
+

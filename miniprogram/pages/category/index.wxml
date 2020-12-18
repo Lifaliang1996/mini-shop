@@ -2,8 +2,8 @@
 	<!-- 左侧大分类 -->
 	<scroll-view id="category-tabs" scroll-y>
 		<van-sidebar active-key="{{ activeIndex }}" bind:change="handleActiveChange">
-			<block wx:for="{{ categoryList }}" wx:for-item="category" wx:key="index">
-				<van-sidebar-item title="{{ category.cat_name }}" />
+			<block wx:for="{{ leftCategories }}" wx:key="index">
+				<van-sidebar-item title="{{ item }}" />
 			</block>
 		</van-sidebar>
 	</scroll-view>
@@ -15,7 +15,7 @@
 	 enable-flex
 	 scroll-top="{{ scrollTop }}"
 	>
-		<block wx:for="{{ categoryContent }}" wx:for-item="cateGroup" wx:key="cat_id">
+		<block wx:for="{{ rightContent }}" wx:for-item="cateGroup" wx:key="cat_id">
 			<view class="cate-group" wx:if="{{ cateGroup.children.length }}">
 				<view class="cate-title">{{ cateGroup.cat_name }}</view>
 				<view class="cate-list">
@@ -25,7 +25,7 @@
 					 wx:for-item="cate"
 					 wx:for-index="cateIndex"
 					 wx:key="cat_id"
-					 url="/pages/goods_list/index?cid={{cate.cat_id}}"
+					 url="/pages/goods-list/index?cid={{cate.cat_id}}"
 					>
 						<view class="img">
 							<image mode="aspectFit" src="{{ cate.cat_icon }}" />

@@ -10,6 +10,7 @@
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
+		"enhance": true,
 		"postcss": true,
 		"preloadBackgroundData": false,
 		"minified": true,
@@ -36,8 +37,7 @@
 				"packageJsonPath": "./package.json",
 				"miniprogramNpmDistDir": "./miniprogram/"
 			}
-		],
-		"enhance": true
+		]
 	},
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
@@ -76,6 +76,14 @@
 					"id": -1,
 					"name": "首页",
 					"pathName": "pages/home/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "商品列表",
+					"pathName": "pages/goods-list/index",
+					"query": "cid=5",
 					"scene": null
 				}
 			]

@@ -1,0 +1,46 @@
+#goods-list {
+  height: calc(100vh - 100rpx);
+
+  .goods-item {
+    display: flex;
+    height: 220rpx;
+    padding: 20rpx 0;
+    border-bottom: 1px solid #f8f8f8;
+
+    .img {
+      flex: 2;
+      height: 100%;
+      padding: 0 20rpx;
+      border-radius: 10rpx;
+      overflow: hidden;
+
+      .van-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 10rpx;
+        overflow: hidden;
+      }
+    }
+
+    .info {
+      flex: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-right: 20rpx;
+
+      .title {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 28rpx;
+      }
+
+      .price {
+        color: var(--theme-color);
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "商品列表",
+  "usingComponents": {
+    "ct-sort-bar": "../../components/sort-bar/index",
+    "van-image": "@vant/weapp/image/index"
+  }
+}

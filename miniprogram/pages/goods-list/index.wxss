@@ -1,0 +1,40 @@
+#goods-list {
+  height: calc(100vh - 100rpx);
+}
+#goods-list .goods-item {
+  display: flex;
+  height: 220rpx;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #f8f8f8;
+}
+#goods-list .goods-item .img {
+  flex: 2;
+  height: 100%;
+  padding: 0 20rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+#goods-list .goods-item .img .van-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+#goods-list .goods-item .info {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 20rpx;
+}
+#goods-list .goods-item .info .title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 28rpx;
+}
+#goods-list .goods-item .info .price {
+  color: var(--theme-color);
+}
