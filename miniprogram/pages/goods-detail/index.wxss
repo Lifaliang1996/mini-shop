@@ -1,1 +1,81 @@
-/* pages/goods-detail/index.wxss */
+page {
+  padding-bottom: 100rpx;
+  background-color: #f2f2f2;
+}
+#swiper {
+  height: 400rpx;
+  background-color: #fff;
+}
+#base-info {
+  padding: 20rpx 30rpx;
+  background-color: #fff;
+  border-radius: 0 0 20rpx 20rpx;
+}
+#base-info .top-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#base-info .top-wrap .price {
+  font-size: 50rpx;
+}
+#base-info .top-wrap .favor {
+  display: flex;
+  flex-direction: column;
+  margin-right: 40rpx;
+}
+#base-info .top-wrap .favor .icon {
+  font-size: 34rpx;
+}
+#base-info .top-wrap .favor .text {
+  font-size: 20rpx;
+}
+#base-info .goods-name {
+  line-height: 1.3;
+  font-size: 30rpx;
+}
+#introduce {
+  margin-top: 30rpx;
+  border-radius: 20rpx 20rpx 0 0;
+  background-color: #fff;
+  overflow: hidden;
+}
+#introduce .van-tabs__content {
+  overflow: hidden;
+  padding: 40rpx 0;
+}
+#introduce .van-tabs__line {
+  background-color: var(--theme-color);
+}
+#introduce .attrs {
+  padding: 0 30rpx;
+  font-size: 24rpx;
+}
+.table {
+  border: 1px solid #f7f7f7;
+}
+.table .tr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 3rem;
+}
+.table .tr .td {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border: 1px solid #f7f7f7;
+  text-align: center;
+}
+.table .tr .th {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  border: 1px solid #f7f7f7;
+  text-align: center;
+}

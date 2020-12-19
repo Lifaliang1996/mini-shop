@@ -44,6 +44,11 @@ Page({
   async getFloorList () {
     try {
       const floorList = await request({ url: '/home/floordata' })
+      floorList.forEach(floor => {
+        floor.product_list.forEach(prod => {
+          prod.keyword = prod?.navigator_url?.match(/.+query=(.+)/)[1]
+        })
+      })
       this.setData({
         floorList
       })

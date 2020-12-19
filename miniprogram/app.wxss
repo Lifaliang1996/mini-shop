@@ -18,3 +18,17 @@ image {
   width: 100%;
   height: 100%;
 }
+
+.price {
+  color: var(--theme-color);
+}
+
+.price::before {
+  content: "￥";
+  font-size: 50%;
+}
+
+.price::after {
+  content: ".00";
+  font-size: 50%;
+}

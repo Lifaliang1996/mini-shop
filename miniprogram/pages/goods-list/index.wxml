@@ -14,7 +14,7 @@
     wx:for="{{ goodsList }}"
     wx:for-item="goods"
     wx:key="goods_id"
-    url="/pages/goods-detail/index"
+    url="/pages/goods-detail/index?goods_id={{ goods.goods_id }}"
   >
     <van-image
       class="img"
@@ -23,7 +23,7 @@
     />
     <view class="info">
       <view class="title">{{ goods.goods_name }}</view>
-      <view class="price">￥{{ goods.goods_price }}</view>
+      <view class="price">{{ goods.goods_price }}</view>
     </view>
   </navigator>
 </scroll-view>

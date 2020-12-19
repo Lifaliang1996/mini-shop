@@ -10,7 +10,7 @@ Page({
   // 请求参数
   requestData: {
     query: '',
-    cid: '',
+    // cid: '',
     pagenum: 1,
     pagesize: 10
   },
@@ -22,7 +22,12 @@ Page({
   type: 0,
 
   onLoad (option) {
-    this.requestData.cid = option.cid
+    if (option.cid) {
+      this.requestData.cid = option.cid
+    }
+    if (option.query) {
+      this.requestData.query = option.query
+    }
     this.getGoodsList()
   },
 

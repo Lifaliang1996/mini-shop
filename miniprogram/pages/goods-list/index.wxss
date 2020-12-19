@@ -35,6 +35,3 @@
   text-overflow: ellipsis;
   font-size: 28rpx;
 }
-#goods-list .goods-item .info .price {
-  color: var(--theme-color);
-}

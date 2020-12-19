@@ -1,2 +1,65 @@
-<!--pages/goods-detail/index.wxml-->
-<text>pages/goods-detail/index.wxml</text>
+<!-- 轮播图 -->
+<swiper
+  id="swiper"
+  autoplay
+  circular
+  indicator-dots
+>
+  <swiper-item
+    wx:for="{{ goodsPic }}"
+    wx:key="index"
+    data-index="{{ index }}"
+    bind:tap="previewImage"
+  >
+    <image mode="aspectFit" src="{{ item }}" />
+  </swiper-item>
+</swiper>
+
+<!-- 商品基础信息 -->
+<view id="base-info">
+  <view class="top-wrap">
+    <view class="price">{{ goodsPrice }}</view>
+    <view class="favor">
+      <van-icon class="icon" name="like-o" />
+      <text class="text">收藏</text>
+    </view>
+  </view>
+  <view class="goods-name">{{ goodsName }}</view>
+</view>
+
+<!-- 商品详情介绍 -->
+<view id="introduce">
+  <van-tabs>
+    <van-tab title="商品介绍">
+      <rich-text nodes="{{ goodsIntroduce }}"></rich-text>
+    </van-tab>
+    <van-tab title="规格参数">
+      <view class="attrs">
+        <view class="table">
+          <view class="tr">
+            <view class="th">规格参数表</view>
+          </view>
+          <block
+            wx:for="{{ goodsAttrs }}"
+            wx:for-item="attr"
+            wx:key="attr_id"
+          >
+            <view class="tr">
+              <view class="td">{{ attr.attr_name }}</view>
+              <view class="td">{{ attr.attr_value }}</view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>
+
+<!-- 操作 -->
+<van-goods-action>
+  <van-goods-action-icon icon="chat-o" text="客服" />
+  <van-goods-action-icon icon="cart-o" text="购物车" />
+  <van-goods-action-button text="加入购物车" type="warning" />
+  <van-goods-action-button text="立即购买" />
+</van-goods-action>
+

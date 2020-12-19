@@ -45,7 +45,7 @@
         wx:for-index="productIndex"
         wx:key="productIndex"
       >
-        <navigator class="product" url="/pages/goods-detail/index?query={{ product.navigator_url }}">
+        <navigator class="product" url="/pages/goods-list/index?query={{ product.keyword }}">
           <image mode="scaleToFill" src="{{ product.image_src }}" />
         </navigator>
       </block>
