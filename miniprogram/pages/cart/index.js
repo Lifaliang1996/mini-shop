@@ -1,66 +1,74 @@
-// pages/cart/index.js
+import Cart from '../../store/cart'
+import { showModal } from '../../utils/wx-promise'
+
+const app = getApp()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    slideButtons: [
+      {
+        type: 'warn',
+        text: '删除'
+      }
+    ],
+    checkedAll: false,
+    totalNum: 0,
+    totalPrice: 0
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onShow () {
+    this.updateData()
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  // 更新 checkedAll、totalPrice、totalNum 属性
+  updateData () {
+    const { cart } = app.store.getState()
+    let totalNum = 0
+    let totalPrice = 0
 
+    cart.forEach(goods => {
+      if (goods.checked) {
+        totalNum += goods.num
+        totalPrice += goods.price * goods.num
+      }
+    })
+
+    const checkedAll = cart.length ? cart.every(goods => goods.checked) : false
+
+    this.setData({
+      totalNum,
+      totalPrice,
+      checkedAll
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  changeGoodsNum (e) {
+    const newNum = e.detail
+    const goodsId = e.currentTarget.dataset.id
+    Cart.changeNum(goodsId, newNum)
+    this.updateData()
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  changeGoodsChecked (e) {
+    const goodsId = e.currentTarget.dataset.id
+    Cart.changeChecked(goodsId)
+    this.updateData()
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  // 全选与反选
+  changeCheckedAll () {
+    const current = this.data.checkedAll
+    Cart.changeCheckedAll(!current)
+    this.updateData()
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  // 滑动单元格选择删除
+  async slideButtonTap (e) {
+    try {
+      await showModal({ content: '是否移除此商品' })
+      const goodsId = e.currentTarget.dataset.id
+      Cart.removeGoods(goodsId)
+      this.updateData()
+    } catch (error) {}
   }
 })

@@ -1,2 +1,57 @@
-<!--pages/cart/index.wxml-->
-<text>pages/cart/index.wxml</text>
+<scroll-view
+  id="goods-list"
+  enable-back-to-top
+  scroll-y
+>
+  <block
+    wx:for="{{ $state.cart }}"
+    wx:for-item="goods"
+    wx:key="goodsId"
+  >
+    <view class="goods-card">
+      <mp-slideview
+        buttons="{{ slideButtons }}"
+        data-id="{{ goods.goodsId }}"
+        bind:buttontap="slideButtonTap"
+      >
+        <view class="warp">
+          <van-checkbox
+            class="check-box"
+            value="{{ goods.checked }}"
+            data-id="{{ goods.goodsId }}"
+            bind:change="changeGoodsChecked"
+          />
+          <navigator class="img" url="/pages/goods-detail/index?goods_id={{ goods.goodsId }}">
+            <van-image fit="contain" src="{{ goods.pic }}" />
+          </navigator>
+          <view class="info">
+            <view class="title">{{ goods.name }}</view>
+            <view class="price-num-wrap">
+              <view class="price">{{ goods.price }}</view>
+              <van-stepper
+                class="num"
+                integer
+                long-press="{{ false }}"
+                value="{{ goods.num }}"
+                data-id="{{ goods.goodsId }}"
+                bind:change="changeGoodsNum"
+              />
+            </view>
+          </view>
+        </view>
+      </mp-slideview>
+    </view>
+  </block>
+</scroll-view>
+
+<!-- 提交订单栏 -->
+<van-submit-bar
+  price="{{ totalPrice * 100 }}"
+  button-text="去结算({{ totalNum }})"
+  bind:submit="onClickButton"
+  tip="{{ true }}"
+>
+  <van-checkbox value="{{ checkedAll }}" bind:change="changeCheckedAll">全选
+  </van-checkbox>
+</van-submit-bar>
+

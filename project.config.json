@@ -48,12 +48,6 @@
   "simulatorPluginLibVersion": {},
   "appid": "wx632cc3d94f669628",
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
     "plugin": {
       "list": []
     },
@@ -91,6 +85,17 @@
           "name": "商品详情",
           "pathName": "pages/goods-detail/index",
           "query": "goods_id=43986",
+          "scene": null
+        },
+        {
+          "name": "购物车",
+          "pathName": "pages/cart/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的",
+          "pathName": "pages/profile/index",
           "scene": null
         }
       ]
