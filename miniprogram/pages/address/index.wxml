@@ -1,0 +1,57 @@
+<!-- 地址列表 -->
+<view id="addr-list">
+  <van-swipe-cell
+    wx:for="{{ addrList }}"
+    wx:for-item="addr"
+    wx:key="id"
+    right-width="{{ index === 0 ? 70 : 140 }}"
+  >
+    <view class="addr-wrap">
+      <view class="info">
+        <view class="name-tel">{{ addr.userName }} {{ addr.telNumber }}</view>
+        <view class="full">
+          <text wx:if="{{ index === 0 }}" class="tag">默认</text>
+          <text>{{ addr.fullAddr }}</text>
+        </view>
+      </view>
+      <navigator class="edit">编辑</navigator>
+    </view>
+    <view slot="right" class="acts">
+      <button
+        wx:if="{{ index !== 0 }}"
+        class="btn def"
+        data-id="{{ addr.id }}"
+        bind:tap="setDefaultAddress"
+      >设为默认
+      </button>
+      <button
+        class="btn del"
+        data-id="{{ addr.id }}"
+        bind:tap="removeAddress"
+      >删除
+      </button>
+    </view>
+  </van-swipe-cell>
+</view>
+
+<!-- 新增按钮 -->
+<view id="add-btns">
+  <van-button
+    class="btn"
+    plain
+    round
+    block
+    bind:click="getAddrByWx"
+  >
+    <text class="iconfont icon-weixin"></text>
+    微信导入
+  </van-button>
+  <van-button
+    class="btn"
+    type="danger"
+    round
+    block
+  >新增收货地址
+  </van-button>
+</view>
+

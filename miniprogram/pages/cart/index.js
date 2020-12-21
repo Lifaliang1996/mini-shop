@@ -1,7 +1,5 @@
-import Cart from '../../store/cart'
-import { showModal } from '../../utils/wx-promise'
-
-const app = getApp()
+import Cart from '../../store/cart/index'
+import wxp from '../../utils/wxp'
 
 Page({
   data: {
@@ -11,6 +9,7 @@ Page({
         text: '删除'
       }
     ],
+    goodsList: [],
     checkedAll: false,
     totalNum: 0,
     totalPrice: 0
@@ -22,20 +21,21 @@ Page({
 
   // 更新 checkedAll、totalPrice、totalNum 属性
   updateData () {
-    const { cart } = app.store.getState()
+    const goodsList = Cart.getCart()
     let totalNum = 0
     let totalPrice = 0
 
-    cart.forEach(goods => {
+    goodsList.forEach(goods => {
       if (goods.checked) {
         totalNum += goods.num
         totalPrice += goods.price * goods.num
       }
     })
 
-    const checkedAll = cart.length ? cart.every(goods => goods.checked) : false
+    const checkedAll = goodsList.length ? goodsList.every(goods => goods.checked) : false
 
     this.setData({
+      goodsList,
       totalNum,
       totalPrice,
       checkedAll
@@ -65,7 +65,7 @@ Page({
   // 滑动单元格选择删除
   async slideButtonTap (e) {
     try {
-      await showModal({ content: '是否移除此商品' })
+      await wxp.showModal({ content: '是否移除此商品' })
       const goodsId = e.currentTarget.dataset.id
       Cart.removeGoods(goodsId)
       this.updateData()

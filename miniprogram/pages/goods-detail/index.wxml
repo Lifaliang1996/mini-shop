@@ -61,7 +61,7 @@
   <van-goods-action-icon
     icon="cart-o"
     text="购物车"
-    info="{{ $state.cart.length || null }}"
+    info="{{ cartLength }}"
     bind:tap="switchToCart"
   />
   <van-goods-action-button

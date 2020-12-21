@@ -1,0 +1,82 @@
+page {
+  background-color: #f7f7f7;
+  padding-bottom: 80px;
+}
+
+#addr-list {
+  background-color: #fff;
+  border-top: var(--border);
+  .addr-wrap {
+    display: flex;
+    padding: 15px;
+    border-bottom: var(--border);
+    .info {
+      flex: 1;
+      .name-tel {
+        font-weight: 600;
+      }
+      .full {
+        font-size: 26rpx;
+        color: var(--text-gray);
+        .tag {
+          margin-right: 10rpx;
+          padding: 0 10rpx;
+          border-radius: 10rpx;
+          border: 1px solid var(--theme-color);
+          color: var(--theme-color);
+          font-size: 22rpx;
+        }
+      }
+    }
+    .edit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 120rpx;
+      font-size: 30rpx;
+      color: var(--theme-color);
+    }
+  }
+
+  .acts {
+    display: flex;
+    height: 100%;
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 100%;
+      padding: 0;
+      border-radius: 0;
+      border: none;
+      font-size: 26rpx;
+      &.def {
+        background-color: #e7e7e7;
+      }
+      &.del {
+        color: #fff;
+        background-color: var(--theme-color);
+      }
+      &::after {
+        border: none;
+      }
+    }
+  }
+}
+
+#add-btns {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px 15px;
+  background-color: #fff;
+  .btn {
+    width: 48%;
+    .icon-weixin {
+      color: #2eb86a;
+    }
+  }
+}

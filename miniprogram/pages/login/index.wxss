@@ -1,1 +1,52 @@
-/* pages/login/index.wxss */
+page {
+  padding: 30rpx;
+}
+.logo {
+  font-size: 160rpx;
+  text-align: center;
+  color: #838383;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.login-btn {
+  margin-top: 60rpx;
+}
+.login-btn .van-button {
+  width: 100%;
+  font-size: 32rpx;
+  border-radius: 40rpx;
+  line-height: 2.2;
+}
+.quick-login {
+  position: fixed;
+  bottom: 100rpx;
+  width: 690rpx;
+}
+.quick-login .van-divider {
+  font-size: 22rpx;
+}
+.quick-login .quick-type {
+  display: flex;
+  justify-content: center;
+}
+.quick-login .quick-type .type-btn {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+.quick-login .quick-type .type-btn::after {
+  border: none;
+}
+.quick-login .quick-type .type-btn .icon {
+  line-height: 1;
+  color: #30d678;
+  font-size: 80rpx;
+}
+.quick-login .quick-type .type-btn .text {
+  color: #969799;
+  font-size: 24rpx;
+}

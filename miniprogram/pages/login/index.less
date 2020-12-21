@@ -1,0 +1,62 @@
+page {
+  padding: 30rpx;
+}
+
+.logo {
+  font-size: 160rpx;
+  text-align: center;
+  color: #838383;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.login-btn {
+  margin-top: 60rpx;
+
+  .van-button {
+    width: 100%;
+    font-size: 32rpx;
+    border-radius: 40rpx;
+    line-height: 2.2;
+  }
+}
+
+.quick-login {
+  position: fixed;
+  bottom: 100rpx;
+  width: 690rpx;
+
+  .van-divider {
+    font-size: 22rpx;
+  }
+
+  .quick-type {
+    display: flex;
+    justify-content: center;
+
+    .type-btn {
+      display: flex;
+      flex-direction: column;
+      background-color: transparent;
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+      outline: none;
+
+      &::after {
+        border: none;
+      }
+
+      .icon {
+        line-height: 1;
+        color: #30d678;
+        font-size: 80rpx;
+      }
+
+      .text {
+        color: #969799;
+        font-size: 24rpx;
+      }
+    }
+  }
+}

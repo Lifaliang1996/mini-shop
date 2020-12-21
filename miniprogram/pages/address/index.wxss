@@ -1,0 +1,79 @@
+page {
+  background-color: #f7f7f7;
+  padding-bottom: 80px;
+}
+#addr-list {
+  background-color: #fff;
+  border-top: var(--border);
+}
+#addr-list .addr-wrap {
+  display: flex;
+  padding: 15px;
+  border-bottom: var(--border);
+}
+#addr-list .addr-wrap .info {
+  flex: 1;
+}
+#addr-list .addr-wrap .info .name-tel {
+  font-weight: 600;
+}
+#addr-list .addr-wrap .info .full {
+  font-size: 26rpx;
+  color: var(--text-gray);
+}
+#addr-list .addr-wrap .info .full .tag {
+  margin-right: 10rpx;
+  padding: 0 10rpx;
+  border-radius: 10rpx;
+  border: 1px solid var(--theme-color);
+  color: var(--theme-color);
+  font-size: 22rpx;
+}
+#addr-list .addr-wrap .edit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120rpx;
+  font-size: 30rpx;
+  color: var(--theme-color);
+}
+#addr-list .acts {
+  display: flex;
+  height: 100%;
+}
+#addr-list .acts .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 100%;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  font-size: 26rpx;
+}
+#addr-list .acts .btn.def {
+  background-color: #e7e7e7;
+}
+#addr-list .acts .btn.del {
+  color: #fff;
+  background-color: var(--theme-color);
+}
+#addr-list .acts .btn::after {
+  border: none;
+}
+#add-btns {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px 15px;
+  background-color: #fff;
+}
+#add-btns .btn {
+  width: 48%;
+}
+#add-btns .btn .icon-weixin {
+  color: #2eb86a;
+}

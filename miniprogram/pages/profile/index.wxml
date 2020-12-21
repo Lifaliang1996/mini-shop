@@ -1,2 +1,88 @@
-<!--pages/profile/index.wxml-->
-<text>pages/profile/index.wxml</text>
+<view id="user-header">
+  <!-- 个人信息 -->
+  <view class="user-info">
+    <view class="avatar">
+      <image wx:if="{{ userInfo }}" src="{{ userInfo.avatarUrl }}" />
+      <text wx:else class="iconfont icon-logo"></text>
+    </view>
+    <view wx:if="{{ userInfo }}" class="personal-wrap">
+      <view class="name">{{ userInfo.nickName }}</view>
+      <view class="tips">
+        <view class="tip">积分：0</view>
+      </view>
+    </view>
+    <navigator wx:else="{{ userInfo }}" url="/pages/login/index">登录 / 注册</navigator>
+  </view>
+
+  <!-- 订单管理 -->
+  <view class="order-wrap">
+    <view class="ord">
+      <text class="icon iconfont icon-daifukuan"></text>
+      <text class="title">待付款</text>
+    </view>
+    <view class="ord">
+      <text class="icon iconfont icon-daifahuo"></text>
+      <text class="title">待发货</text>
+    </view>
+    <view class="ord">
+      <text class="icon iconfont icon-daishouhuo"></text>
+      <text class="title">待收货</text>
+    </view>
+    <view class="ord">
+      <text class="icon iconfont icon-daipingjia"></text>
+      <text class="title">待评价</text>
+    </view>
+    <view class="ord">
+      <text class="icon iconfont icon-tuihuanhuo"></text>
+      <text class="title">退换货</text>
+    </view>
+  </view>
+</view>
+
+<!-- 个人选项 -->
+<view class="activity-wrap">
+  <van-cell
+    title="收货地址管理"
+    is-link
+    url="/pages/address/index"
+  >
+    <van-icon
+      slot="icon"
+      size="large"
+      name="../../../../assets/activity-icon/dizhi.png"
+    />
+  </van-cell>
+  <van-cell
+    title="联系客服"
+    is-link
+    value="18989142493"
+  >
+    <van-icon
+      slot="icon"
+      size="large"
+      name="../../../../assets/activity-icon/dianhua.png"
+    />
+  </van-cell>
+  <van-cell title="意见反馈" is-link>
+    <van-icon
+      slot="icon"
+      size="large"
+      name="../../../../assets/activity-icon/fankui.png"
+    />
+  </van-cell>
+  <van-cell title="关于我们" is-link>
+    <van-icon
+      slot="icon"
+      size="large"
+      name="../../../../assets/activity-icon/guanyu.png"
+    />
+  </van-cell>
+  <van-cell title="把应用推荐给其他人" is-link>
+    <van-icon
+      slot="icon"
+      size="large"
+      name="../../../../assets/activity-icon/fenxiang.png"
+    />
+  </van-cell>
+</view>
+

@@ -1,2 +1,45 @@
-<!--pages/login/index.wxml-->
-<text>pages/login/index.wxml</text>
+<view class="logo iconfont icon-logo" />
+
+<view class="input-container">
+  <van-field
+    model:value="{{ phone }}"
+    label="手机号"
+    placeholder="请输入手机号"
+    type="number"
+    title-width="120rpx"
+    clearable
+    border
+  />
+  <van-field
+    value="{{ password }}"
+    label="密码"
+    placeholder="请输入密码"
+    title-width="120rpx"
+    password
+    center
+    clearable
+    border
+  >
+  </van-field>
+</view>
+
+<view class="login-btn">
+  <van-button class="login-btn" type="danger">
+    登 录
+  </van-button>
+</view>
+
+<view class="quick-login">
+  <van-divider content-position="center">其他登录方式</van-divider>
+  <view class="quick-type">
+    <button
+      class="type-btn"
+      open-type="getUserInfo"
+      bind:getuserinfo="loginByWx"
+    >
+      <text class="iconfont icon-weixin icon" />
+      <text class="text">微信</text>
+    </button>
+  </view>
+</view>
+

@@ -1,5 +1,7 @@
 page {
   --theme-color: #fd633f;
+  --text-gray: #383838;
+  --border: 1px solid #eeeeee;
 
   --checkbox-checked-icon-color: var(--theme-color);
   --button-danger-background-color: var(--theme-color);

@@ -1,15 +1,4 @@
-import store from './index.js'
-
 const CART_KEY = 'CART'
-
-/**
- * 将数据同步至全局状态
- */
-function saveCartToStore () {
-  store.setState({
-    cart
-  })
-}
 
 /**
  * 将购物车数据储存到缓存
@@ -24,12 +13,20 @@ function saveCartToLocal () {
  * 从缓存中读取购物车数据
  * @return {Array<object>} cart 购物车数据
  */
-function getCart () {
+function getCartByLocal () {
   try {
     return wx.getStorageSync(CART_KEY) || []
   } catch (error) {
     return []
   }
+}
+
+/**
+ * 获取购物车商品列表
+ * @return {Array<object>} goodsList 购物车商品列表
+ */
+function getCart () {
+  return cart
 }
 
 /**
@@ -50,7 +47,6 @@ function addGoods (goods) {
   }
 
   saveCartToLocal(cart)
-  saveCartToStore(cart)
 
   wx.showToast({
     title: '加入成功',
@@ -67,7 +63,6 @@ function removeGoods (goodsId) {
   const index = cart.findIndex(g => g.goodsId === goodsId)
   if (index !== -1) {
     cart.splice(index, 1)
-    saveCartToStore()
     saveCartToLocal()
   }
 }
@@ -81,7 +76,6 @@ function changeNum (goodsId, newNum) {
   const oldGoods = cart.find(g => g.goodsId === goodsId)
   if (oldGoods) {
     oldGoods.num = newNum
-    saveCartToStore()
     saveCartToLocal()
   }
 }
@@ -94,7 +88,6 @@ function changeChecked (goodsId) {
   const oldGoods = cart.find(g => g.goodsId === goodsId)
   if (oldGoods) {
     oldGoods.checked = !oldGoods.checked
-    saveCartToStore()
     saveCartToLocal()
   }
 }
@@ -105,17 +98,14 @@ function changeChecked (goodsId) {
  */
 function changeCheckedAll (value) {
   cart.forEach(goods => (goods.checked = !!value))
-  saveCartToStore()
   saveCartToLocal()
 }
 
 // 内部维护的购物车数据
-const cart = getCart()
-
-// 初始化时将缓存中数据同步至全局状态
-saveCartToStore(cart)
+const cart = getCartByLocal()
 
 export default {
+  getCart,
   addGoods,
   changeNum,
   removeGoods,

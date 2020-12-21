@@ -1,6 +1,5 @@
 import request from '../../utils/request'
-import Cart from '../../store/cart'
-const app = getApp()
+import Cart from '../../store/cart/index'
 
 Page({
   data: {
@@ -8,14 +7,23 @@ Page({
     goodsPrice: 0,
     goodsPic: [],
     goodsIntroduce: '',
-    goodsAttrs: []
+    goodsAttrs: [],
+    cartLength: 0
   },
 
   // 源数据
   goodsRaw: {},
 
   onLoad (options) {
+    this.updateCartLength()
     this.getGoodsDetail(options.goods_id)
+  },
+
+  updateCartLength () {
+    const cartLength = Cart.getCart().length || null
+    this.setData({
+      cartLength
+    })
   },
 
   // 获取商品数据
@@ -57,7 +65,7 @@ Page({
       price: goods.goods_price,
       pic: goods.goods_small_logo
     })
-    console.log(app.store.getState())
+    this.updateCartLength()
   },
 
   // 跳转到 Cart 页面

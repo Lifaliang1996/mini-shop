@@ -4,7 +4,7 @@
   scroll-y
 >
   <block
-    wx:for="{{ $state.cart }}"
+    wx:for="{{ goodsList }}"
     wx:for-item="goods"
     wx:key="goodsId"
   >
