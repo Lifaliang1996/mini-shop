@@ -1,0 +1,70 @@
+<!-- 表单 -->
+<view>
+  <van-field
+    label="收货人"
+    placeholder="姓名"
+    clearable
+    model:value="{{ userName }}"
+  />
+  <van-field
+    type="number"
+    label="联系方式"
+    placeholder="手机号"
+    clearable
+    model:value="{{ telNumber }}"
+  />
+  <picker
+    mode="region"
+    bindchange="changeRegion"
+    value="{{ [provinceName, cityName, countyName] }}"
+  >
+    <van-field
+      label="省市区"
+      placeholder="省市区"
+      is-link
+      value="{{ provinceName }} {{ cityName }} {{ countyName }}"
+    />
+  </picker>
+  <van-field
+    type="textarea"
+    label="详细地址"
+    placeholder="详细地址需填写楼栋楼层或房间号信息"
+    autosize
+    clearable
+    model:value="{{ detailInfo }}"
+  />
+
+  <van-cell
+    wx:if="{{ !id }}"
+    title="设为默认地址"
+    label="每次下单会默认使用改地址"
+    border="{{ false }}"
+  >
+    <van-switch
+      active-color="var(--theme-color)"
+      checked="{{ isDefault }}"
+      bind:change="changeIsDefault"
+    />
+  </van-cell>
+</view>
+
+<!-- 按钮 -->
+<view id="btn-wrap">
+  <button
+    class="primary round danger"
+    block
+    round
+    bind:tap="saveAddress"
+  >保 存
+  </button>
+  <button
+    wx:if="{{ id }}"
+    class="primary round"
+    style="margin-top: 15px"
+    block
+    round
+    bind:tap="removeAddress"
+  >删除该地址
+  </button>
+</view>
+

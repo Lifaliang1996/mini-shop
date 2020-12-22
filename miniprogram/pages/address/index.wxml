@@ -14,7 +14,7 @@
           <text>{{ addr.fullAddr }}</text>
         </view>
       </view>
-      <navigator class="edit">编辑</navigator>
+      <navigator class="edit" url="/pages/address-edit/index?addressId={{ addr.id }}">编辑</navigator>
     </view>
     <view slot="right" class="acts">
       <button
@@ -51,6 +51,7 @@
     type="danger"
     round
     block
+    bind:click="toEditPage"
   >新增收货地址
   </van-button>
 </view>

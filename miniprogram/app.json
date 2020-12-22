@@ -12,13 +12,13 @@
     "pages/feedback/index",
     "pages/login/index",
     "pages/address/index",
-    "pages/pay/index"
+    "pages/pay/index",
+    "pages/address-edit/index"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fd633f",
-    "navigationBarTitleText": "优购",
-    "navigationBarTextStyle": "white"
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "优购"
   },
   "tabBar": {
     "selectedColor": "#fd633f",

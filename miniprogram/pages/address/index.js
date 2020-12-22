@@ -20,20 +20,8 @@ Page({
   async getAddrByWx () {
     try {
       const address = await wxp.chooseAddress()
-      const {
-        userName,
-        telNumber,
-        provinceName,
-        cityName,
-        detailInfo
-      } = address
-      User.address.addAddress({
-        userName,
-        telNumber,
-        provinceName,
-        cityName,
-        detailInfo
-      })
+      delete address.errMsg
+      User.address.addAddress(address)
       this.updateAddress()
     } catch (error) {}
   },
@@ -59,5 +47,12 @@ Page({
         icon: 'success'
       })
     } catch (error) {}
+  },
+
+  // 跳转到地址编辑页
+  toEditPage () {
+    wx.navigateTo({
+      url: '/pages/address-edit/index'
+    })
   }
 })

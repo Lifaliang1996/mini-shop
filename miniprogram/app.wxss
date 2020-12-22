@@ -32,3 +32,14 @@ image {
   content: ".00";
   font-size: 50%;
 }
+
+button.primary::after {
+  border: none;
+}
+button.round {
+  border-radius: 20px !important;
+}
+button.danger {
+  background-color: var(--theme-color);
+  color: #fff;
+}

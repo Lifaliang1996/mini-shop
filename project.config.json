@@ -108,6 +108,7 @@
         {
           "name": "地址管理",
           "pathName": "pages/address/index",
+          "query": "",
           "scene": null
         }
       ]
