@@ -1,3 +1,9 @@
+<ct-navigation-bar
+  background="var(--theme-color)"
+  search-bar
+  bind:search="toGoodsListPage"
+></ct-navigation-bar>
+
 <!-- 轮播图 -->
 <swiper
   id="swiper"
@@ -45,7 +51,7 @@
         wx:for-index="productIndex"
         wx:key="productIndex"
       >
-        <navigator class="product" url="/pages/goods-list/index?query={{ product.keyword }}">
+        <navigator class="product" url="/pages/goods-list/index?key={{ product.keyword }}">
           <image mode="scaleToFill" src="{{ product.image_src }}" />
         </navigator>
       </block>

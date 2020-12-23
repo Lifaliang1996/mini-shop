@@ -53,5 +53,9 @@ Page({
         floorList
       })
     } catch (error) {}
+  },
+
+  toGoodsListPage () {
+    wx.navigateTo({ url: '/pages/goods-list/index' })
   }
 })

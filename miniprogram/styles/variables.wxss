@@ -2,9 +2,12 @@ page {
   --theme-color: #fd633f;
   --text-gray: #383838;
   --border: 1px solid #eeeeee;
+  --bg-gray: #f7f7f7;
 
+  --font-weight-bold: 600;
   --checkbox-checked-icon-color: var(--theme-color);
   --button-danger-background-color: var(--theme-color);
   --button-danger-border-color: var(--theme-color);
   --submit-bar-price-color: var(--theme-color);
+  --tabs-bottom-bar-color: var(--theme-color);
 }

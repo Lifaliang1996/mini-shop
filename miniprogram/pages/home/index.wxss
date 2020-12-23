@@ -1,19 +1,8 @@
-/*
-此文件为开发者工具生成，生成时间: 2020/12/17 下午9:12:52 
-使用方法：参考 "pages\home\index.skeleton.wxml"
-*/
-.sk-image {
-  background: #EFEFEF !important;
+.weui-navigation-bar {
+  height: 65px;
 }
-.sk-container {
-  position: absolute;
-  overflow: hidden;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1000000;
-  background-color: transparent;
+.weui-navigation-bar .weui-navigation-bar__inner {
+  height: 65px;
 }
 #swiper {
   width: 750rpx;

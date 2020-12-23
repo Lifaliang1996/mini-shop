@@ -31,7 +31,7 @@ Page({
       await wxp.showModal({ title: '确定要删除此地址吗' })
       User.address.removeAddress(e.currentTarget.dataset.id)
       this.updateAddress()
-      wxp.showToast({
+      wx.showToast({
         title: '删除成功',
         icon: 'success'
       })
@@ -42,7 +42,7 @@ Page({
     try {
       User.address.setDefault(e.currentTarget.dataset.id)
       this.updateAddress()
-      wxp.showToast({
+      wx.showToast({
         title: '设置成功',
         icon: 'success'
       })

@@ -99,7 +99,7 @@ Page({
       const id = this.data.id
       await wxp.showModal({ title: '确定要删除此地址吗' })
       User.address.removeAddress(id)
-      wxp.showToast({
+      wx.showToast({
         title: '删除成功',
         icon: 'success'
       })

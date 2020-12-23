@@ -2,9 +2,32 @@
  小程序 api promise
 */
 
-import { promisifyAll } from 'miniprogram-api-promise'
+function showModal (config) {
+  return new Promise((resolve, reject) => {
+    wx.showModal({
+      ...config,
+      success: result => {
+        if (result.confirm) {
+          resolve()
+        } else {
+          reject()
+        }
+      },
+      fail: reject
+    })
+  })
+}
 
-const wxp = {}
-promisifyAll(wx, wxp)
+function chooseAddress () {
+  return new Promise((resolve, reject) => {
+    wx.chooseAddress({
+      success: resolve,
+      fail: reject
+    })
+  })
+}
 
-export default wxp
+export default {
+  showModal,
+  chooseAddress
+}

@@ -1,4 +1,49 @@
+<!-- 收货地址选择 -->
+<view
+  wx:if="{{ isLogin && goodsList.length && addressList.length }}"
+  id="addr-wrap"
+  class="br-bm"
+  bind:tap="showActionSheet"
+>
+  <text class="iconfont icon-dizhi"></text>
+  <text>{{ currentAddr.fullAddr }}</text>
+</view>
+<van-action-sheet
+  title="配送至"
+  show="{{ actionSheetShow }}"
+  bind:close="hideActionSheet"
+>
+  <radio-group bindchange="changeCurrentAddr">
+    <label
+      class="weui-cell weui-check__label"
+      wx:for="{{ addressList }}"
+      wx:for-item="addr"
+      wx:key="value"
+    >
+      <view>
+        <radio
+          color="var(--theme-color)"
+          value="{{ addr.id }}"
+          checked="{{ addr.id === currentAddr.id }}"
+        />
+      </view>
+      <view class="weui-cell__bd">{{ addr.fullAddr }}</view>
+    </label>
+  </radio-group>
+</van-action-sheet>
+
+<!-- 空状态 -->
+<van-empty
+  wx:if="{{ !goodsList.length }}"
+  image="../../../../assets/empty-icon/cart.png"
+  description="购物车竟然是空的 o(╥﹏╥)o"
+>
+  <navigator open-type="switchTab" url="/pages/home/index">
+    <button class="primary danger">去逛逛</button>
+  </navigator>
+</van-empty>
 <scroll-view
+  wx:else
   id="goods-list"
   enable-back-to-top
   scroll-y
@@ -8,7 +53,7 @@
     wx:for-item="goods"
     wx:key="goodsId"
   >
-    <view class="goods-card">
+    <view class="goods-card br-top br-bm">
       <mp-slideview
         buttons="{{ slideButtons }}"
         data-id="{{ goods.goodsId }}"
@@ -46,11 +91,24 @@
 
 <!-- 提交订单栏 -->
 <van-submit-bar
+  wx:if="{{ goodsList.length }}"
   price="{{ totalPrice * 100 }}"
   button-text="去结算({{ totalNum }})"
+  disabled="{{ !isLogin || !addressList.length }}"
   bind:submit="onClickButton"
-  tip="{{ true }}"
 >
+  <navigator
+    slot="tip"
+    wx:if="{{ !isLogin }}"
+    url="/pages/login/index"
+  >您还没有登录，点击前往登录
+  </navigator>
+  <navigator
+    slot="tip"
+    wx:elif="{{ !addressList.length }}"
+    url="/pages/address/index"
+  >您还没有收货地址，点击前往添加收货地址
+  </navigator>
   <van-checkbox value="{{ checkedAll }}" bind:change="changeCheckedAll">全选
   </van-checkbox>
 </van-submit-bar>

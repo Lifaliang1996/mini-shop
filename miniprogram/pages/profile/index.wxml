@@ -11,28 +11,58 @@
         <view class="tip">积分：0</view>
       </view>
     </view>
-    <navigator wx:else="{{ userInfo }}" url="/pages/login/index">登录 / 注册</navigator>
+    <navigator
+      wx:else="{{ userInfo }}"
+      class="login-tip"
+      url="/pages/login/index"
+    >登录 / 注册
+    </navigator>
   </view>
 
   <!-- 订单管理 -->
   <view class="order-wrap">
-    <view class="ord">
+    <view
+      class="ord"
+      hover-class="navigator-hover"
+      data-type="daifukuan"
+      bind:tap="toOrderPage"
+    >
       <text class="icon iconfont icon-daifukuan"></text>
       <text class="title">待付款</text>
     </view>
-    <view class="ord">
+    <view
+      class="ord"
+      hover-class="navigator-hover"
+      data-type="daifahuo"
+      bind:tap="toOrderPage"
+    >
       <text class="icon iconfont icon-daifahuo"></text>
       <text class="title">待发货</text>
     </view>
-    <view class="ord">
+    <view
+      class="ord"
+      hover-class="navigator-hover"
+      data-type="daishouhuo"
+      bind:tap="toOrderPage"
+    >
       <text class="icon iconfont icon-daishouhuo"></text>
       <text class="title">待收货</text>
     </view>
-    <view class="ord">
+    <view
+      class="ord"
+      hover-class="navigator-hover"
+      data-type="daipingjia"
+      bind:tap="toOrderPage"
+    >
       <text class="icon iconfont icon-daipingjia"></text>
       <text class="title">待评价</text>
     </view>
-    <view class="ord">
+    <view
+      class="ord"
+      hover-class="navigator-hover"
+      data-type="tuihuanhuo"
+      bind:tap="toOrderPage"
+    >
       <text class="icon iconfont icon-tuihuanhuo"></text>
       <text class="title">退换货</text>
     </view>
@@ -42,8 +72,10 @@
 <!-- 个人选项 -->
 <view class="activity-wrap">
   <van-cell
+    wx:if="{{ userInfo }}"
     title="收货地址管理"
     is-link
+    size="large"
     url="/pages/address/index"
   >
     <van-icon
@@ -55,7 +87,10 @@
   <van-cell
     title="联系客服"
     is-link
+    size="large"
     value="18989142493"
+    data-phone="18989142493"
+    bind:click="makePhoneCall"
   >
     <van-icon
       slot="icon"
@@ -63,21 +98,41 @@
       name="../../../../assets/activity-icon/dianhua.png"
     />
   </van-cell>
-  <van-cell title="意见反馈" is-link>
+  <van-cell is-link size="large">
+    <button
+      slot="title"
+      class="primary act-btn"
+      open-type="feedback"
+    >意见反馈
+    </button>
     <van-icon
       slot="icon"
       size="large"
       name="../../../../assets/activity-icon/fankui.png"
     />
   </van-cell>
-  <van-cell title="关于我们" is-link>
+  <van-cell
+    title="关于我们"
+    is-link
+    size="large"
+  >
     <van-icon
       slot="icon"
       size="large"
       name="../../../../assets/activity-icon/guanyu.png"
     />
   </van-cell>
-  <van-cell title="把应用推荐给其他人" is-link>
+  <van-cell
+    is-link
+    size="large"
+    border="{{ false }}"
+  >
+    <button
+      slot="title"
+      class="primary act-btn"
+      open-type="share"
+    >把应用分享给其他人
+    </button>
     <van-icon
       slot="icon"
       size="large"

@@ -1,4 +1,5 @@
 import Cart from '../../store/cart/index'
+import User from '../../store/user/index.js'
 import wxp from '../../utils/wxp'
 
 Page({
@@ -12,11 +13,59 @@ Page({
     goodsList: [],
     checkedAll: false,
     totalNum: 0,
-    totalPrice: 0
+    totalPrice: 0,
+    // 地址选择面板是否展示
+    actionSheetShow: false,
+    // 收货地址列表
+    addressList: [],
+    // 当前选择的收货地址
+    currentAddr: {},
+    isLogin: false
   },
 
   onShow () {
     this.updateData()
+    this.initAddress()
+    this.initIsLogin()
+  },
+
+  initIsLogin () {
+    const userInfo = User.userInfo.getUserInfo()
+    this.setData({
+      isLogin: !!userInfo
+    })
+  },
+
+  initAddress () {
+    const addressList = User.address.getAddressList()
+    this.setData({
+      addressList,
+      currentAddr: addressList[0] || {}
+    })
+  },
+
+  // 更改地址
+  changeCurrentAddr (e) {
+    const id = e.detail.value
+    const currentAddr = this.data.addressList.find(addr => addr.id === id)
+    this.setData({
+      currentAddr
+    })
+    this.hideActionSheet()
+  },
+
+  // 显示地址选择上拉框
+  showActionSheet () {
+    this.setData({
+      actionSheetShow: true
+    })
+  },
+
+  // 隐藏地址选择上拉框
+  hideActionSheet (isShow = true) {
+    this.setData({
+      actionSheetShow: false
+    })
   },
 
   // 更新 checkedAll、totalPrice、totalNum 属性
@@ -32,7 +81,9 @@ Page({
       }
     })
 
-    const checkedAll = goodsList.length ? goodsList.every(goods => goods.checked) : false
+    const checkedAll = goodsList.length
+      ? goodsList.every(goods => goods.checked)
+      : false
 
     this.setData({
       goodsList,

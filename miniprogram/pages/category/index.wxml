@@ -1,41 +1,46 @@
+<ct-navigation-bar search-bar bind:search="toGoodsListPage"></ct-navigation-bar>
+
 <view id="category">
-	<!-- 左侧大分类 -->
-	<scroll-view id="category-tabs" scroll-y>
-		<van-sidebar active-key="{{ activeIndex }}" bind:change="handleActiveChange">
-			<block wx:for="{{ leftCategories }}" wx:key="index">
-				<van-sidebar-item title="{{ item }}" />
-			</block>
-		</van-sidebar>
-	</scroll-view>
+  <!-- 左侧大分类 -->
+  <scroll-view id="category-tabs" scroll-y>
+    <van-sidebar active-key="{{ activeIndex }}" bind:change="handleActiveChange">
+      <block wx:for="{{ leftCategories }}" wx:key="index">
+        <van-sidebar-item title="{{ item }}" />
+      </block>
+    </van-sidebar>
+  </scroll-view>
 
-	<!-- 右侧分类详情 -->
-	<scroll-view
-	 id="category-content"
-	 scroll-y
-	 enable-flex
-	 scroll-top="{{ scrollTop }}"
-	>
-		<block wx:for="{{ rightContent }}" wx:for-item="cateGroup" wx:key="cat_id">
-			<view class="cate-group" wx:if="{{ cateGroup.children.length }}">
-				<view class="cate-title">{{ cateGroup.cat_name }}</view>
-				<view class="cate-list">
-					<navigator
-					 class="cate-item"
-					 wx:for="{{ cateGroup.children }}"
-					 wx:for-item="cate"
-					 wx:for-index="cateIndex"
-					 wx:key="cat_id"
-					 url="/pages/goods-list/index?cid={{cate.cat_id}}"
-					>
-						<view class="img">
-							<image mode="aspectFit" src="{{ cate.cat_icon }}" />
-						</view>
-						<view class="name">{{ cate.cat_name }}</view>
-					</navigator>
-				</view>
-			</view>
-		</block>
-	</scroll-view>
+  <!-- 右侧分类详情 -->
+  <scroll-view
+    id="category-content"
+    scroll-y
+    enable-flex
+    scroll-top="{{ scrollTop }}"
+  >
+    <block
+      wx:for="{{ rightContent }}"
+      wx:for-item="cateGroup"
+      wx:key="cat_id"
+    >
+      <view class="cate-group" wx:if="{{ cateGroup.children.length }}">
+        <view class="cate-title">{{ cateGroup.cat_name }}</view>
+        <view class="cate-list">
+          <navigator
+            class="cate-item"
+            wx:for="{{ cateGroup.children }}"
+            wx:for-item="cate"
+            wx:for-index="cateIndex"
+            wx:key="cat_id"
+            url="/pages/goods-list/index?cid={{ cate.cat_id }}&key={{ cate.cat_name }}"
+          >
+            <view class="img">
+              <image mode="aspectFit" src="{{ cate.cat_icon }}" />
+            </view>
+            <view class="name">{{ cate.cat_name }}</view>
+          </navigator>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
 </view>
-
 

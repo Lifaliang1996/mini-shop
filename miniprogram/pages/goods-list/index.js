@@ -2,18 +2,36 @@ import request from '../../utils/request'
 
 Page({
   data: {
+    // 搜索的关键词
+    searchKey: '',
+    // 搜索页面是否显示
+    searchShow: false,
+    // 热门搜索标签
+    hotTags: [
+      '华为',
+      '洗发露',
+      '小米',
+      '饼干',
+      '羽绒服',
+      '袜子',
+      '内衣',
+      '手表',
+      '裤子',
+      '衣服',
+      '这是一个不存在的商品'
+    ],
+    // 空状态是否显示
+    emptyShow: false,
     goodsList: [],
     scrollTop: 0,
     isRefreshing: false
   },
 
-  // 请求参数
-  requestData: {
-    query: '',
-    // cid: '',
-    pagenum: 1,
-    pagesize: 10
-  },
+  // 请求数据
+  cid: '',
+  pagenum: 1,
+  pagesize: 10,
+
   // 后台总条数
   total: 0,
   // 商品列表的源数据
@@ -21,29 +39,53 @@ Page({
   // 当前排序方式
   type: 0,
 
-  onLoad (option) {
-    if (option.cid) {
-      this.requestData.cid = option.cid
+  onLoad (options) {
+    const { cid, key } = options
+    if (!cid && !key) {
+      this.setData({
+        searchShow: true
+      })
+      return
     }
-    if (option.query) {
-      this.requestData.query = option.query
+    if (cid) {
+      this.cid = cid
+    }
+    if (key) {
+      this.setData({
+        searchKey: key
+      })
     }
     this.getGoodsList()
   },
 
   async getGoodsList () {
     try {
+      const reqData = {
+        pagenum: this.pagenum,
+        pagesize: this.pagesize
+      }
+      if (this.cid) {
+        reqData.cid = this.cid
+      } else {
+        reqData.query = this.data.searchKey
+      }
       const data = await request({
         url: '/goods/search',
-        data: this.requestData
+        data: reqData
       })
-      this.requestData.pagenum += 1
-      this.total = data.total
-      this.goodsListRaw.push(...data.goods)
-
-      this.setData({
-        goodsList: this.data.goodsList.concat(data.goods)
-      })
+      const goodsList = data.goods
+      if (goodsList.length) {
+        this.pagenum += 1
+        this.total = data.total
+        this.goodsListRaw.push(...goodsList)
+        this.setData({
+          goodsList: this.data.goodsList.concat(goodsList)
+        })
+      } else {
+        this.setData({
+          emptyShow: true
+        })
+      }
     } catch (error) {}
 
     this.setData({
@@ -53,9 +95,7 @@ Page({
 
   // 加载更多
   getMoreGoodsList () {
-    const { pagenum, pagesize } = this.requestData
-
-    if (this.total <= pagenum * pagesize) {
+    if (this.total <= this.pagenum * this.pagesize) {
       wx.showToast({
         title: 'o(╥﹏╥)o 没有更多了',
         icon: 'none'
@@ -66,15 +106,80 @@ Page({
     this.getGoodsList()
   },
 
+  // 点击导航栏返回按钮
+  handleBack () {
+    wx.navigateBack()
+  },
+
   // 下拉刷新
   refreshGoodsList () {
     this.setData({
       isRefreshing: true
     })
-    this.requestData.pagenum = 1
+    this.pagenum = 1
     this.goodsListRaw.length = 0
     this.setData({
       goodsList: []
+    })
+    this.getGoodsList()
+  },
+
+  /**
+   * 搜索框获得焦点
+   * 搜索页面覆盖商品列表
+   */
+  handleFocus () {
+    this.setData({
+      searchShow: true
+    })
+  },
+
+  /**
+   * 点击取消搜索
+   * 搜索页面隐藏
+   */
+  handleCancelSearch () {
+    this.setData({
+      searchShow: false
+    })
+  },
+
+  /**
+   * 还原为初始状态
+   */
+  resetData () {
+    this.goodsListRaw.length = 0
+    this.cid = ''
+    this.pagenum = 1
+    this.setData({
+      goodsList: [],
+      emptyShow: false
+    })
+  },
+
+  /**
+   * 确认搜索：
+   * 初始化状态
+   * 根据关键词获取商品列表
+   * 隐藏搜索框
+   */
+  handleSearch (e) {
+    const key = e.detail
+    if (!key) return
+    this.resetData()
+    this.getGoodsList()
+    this.setData({
+      searchShow: false
+    })
+  },
+
+  // 点击搜索 tag
+  async handleTapTag (e) {
+    const tag = e.currentTarget.dataset.tag
+    this.resetData()
+    this.setData({
+      searchKey: tag,
+      searchShow: false
     })
     this.getGoodsList()
   },

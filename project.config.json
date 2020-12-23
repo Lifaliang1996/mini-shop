@@ -23,6 +23,9 @@
     "checkInvalidKey": true,
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -40,9 +43,7 @@
         "miniprogramNpmDistDir": "./miniprogram/"
       }
     ],
-    "minifyWXSS": true,
-    "useMultiFrameRuntime": false,
-    "useApiHook": true
+    "minifyWXSS": true
   },
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
@@ -74,10 +75,9 @@
           "scene": null
         },
         {
-          "id": 2,
           "name": "商品列表",
           "pathName": "pages/goods-list/index",
-          "query": "cid=5",
+          "query": "",
           "scene": null
         },
         {
@@ -109,6 +109,12 @@
           "name": "地址管理",
           "pathName": "pages/address/index",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "订单管理",
+          "pathName": "pages/order/index",
+          "query": "type=daifukuan",
           "scene": null
         }
       ]

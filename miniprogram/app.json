@@ -9,12 +9,14 @@
     "pages/collect/index",
     "pages/order/index",
     "pages/search/index",
-    "pages/feedback/index",
     "pages/login/index",
     "pages/address/index",
     "pages/pay/index",
     "pages/address-edit/index"
   ],
+  "usingComponents": {
+    "ct-navigation-bar": "./components/navigation-bar/index"
+  },
   "window": {
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle": "black",

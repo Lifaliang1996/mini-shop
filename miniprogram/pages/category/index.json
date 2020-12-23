@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "商品分类",
+  "navigationStyle": "custom",
   "usingComponents": {
     "van-sidebar": "@vant/weapp/sidebar/index",
     "van-sidebar-item": "@vant/weapp/sidebar-item/index"

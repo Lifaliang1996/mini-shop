@@ -8,7 +8,7 @@ Page({
     // 当前选中的分类
     activeIndex: 0,
     // 左侧大分类
-    leftCategories: [],    
+    leftCategories: [],
     // 右侧分类详情
     rightContent: [],
     // 右侧详情滚动距顶部距离
@@ -59,5 +59,9 @@ Page({
       rightContent,
       scrollTop: 0
     })
+  },
+
+  toGoodsListPage () {
+    wx.navigateTo({ url: '/pages/goods-list/index' })
   }
 })
