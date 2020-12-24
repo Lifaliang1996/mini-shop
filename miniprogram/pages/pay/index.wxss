@@ -1,1 +1,36 @@
-/* pages/pay/index.wxss */
+page {
+  background-color: var(--bg-gray);
+  color: var(--text-gray);
+}
+#addr {
+  padding: 15rpx 15px;
+  background-color: #fff;
+}
+#addr .name-tel {
+  font-weight: 600;
+}
+#addr .full {
+  font-size: 26rpx;
+}
+#goods-list {
+  margin-top: 15rpx;
+}
+#goods-list .goods-item .num {
+  font-size: 26rpx;
+}
+#buy-checkout {
+  margin-top: 15rpx;
+  padding: 10px 15px;
+  background-color: #fff;
+  font-size: 30rpx;
+}
+#buy-checkout .desc {
+  display: flex;
+  justify-content: space-between;
+  padding: 15rpx 0;
+}
+#buy-checkout .total-price {
+  padding-top: 15rpx;
+  border-top: var(--border);
+  text-align: right;
+}

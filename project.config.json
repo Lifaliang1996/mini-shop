@@ -127,6 +127,12 @@
           "pathName": "pages/footmark/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "确认订单",
+          "pathName": "pages/pay/index",
+          "query": "addr_id=1608809238837",
+          "scene": null
         }
       ]
     }

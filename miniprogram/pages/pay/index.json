@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "确认订单",
+  "usingComponents": {
+    "van-submit-bar": "@vant/weapp/submit-bar/index"
+  }
 }

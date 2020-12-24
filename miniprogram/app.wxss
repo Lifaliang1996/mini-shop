@@ -53,6 +53,11 @@ button.danger {
   border-bottom-right-radius: 20rpx;
 }
 
+.round-card {
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
 
 .btn-top {
   position: fixed;

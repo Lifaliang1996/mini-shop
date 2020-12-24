@@ -87,7 +87,7 @@
   price="{{ totalPrice * 100 }}"
   button-text="去结算({{ totalNum }})"
   disabled="{{ !isLogin || !totalNum || !currentAddr.id }}"
-  bind:submit="onClickButton"
+  bind:submit="toPayPage"
 >
   <navigator
     slot="tip"

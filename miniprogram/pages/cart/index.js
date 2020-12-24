@@ -25,8 +25,10 @@ Page({
 
   onShow () {
     this.updateData()
-    this.initAddress()
     this.initIsLogin()
+    if (!this.data.currentAddr.id) {
+      this.initAddress()
+    }
   },
 
   initIsLogin () {
@@ -121,6 +123,10 @@ Page({
       Cart.removeGoods(goodsId)
       this.updateData()
     } catch (error) {}
+  },
+
+  toPayPage () {
+    wx.navigateTo({ url: `/pages/pay/index?addr_id=${this.data.currentAddr.id}`} )
   },
 
   toGoodsDetailPage (e) {
