@@ -138,9 +138,10 @@
     />
   </van-cell>
   <van-cell
-    title="关于我们"
-    is-link
     size="large"
+    title="关于大白熊"
+    is-link
+    url="/pages/about/index"
   >
     <van-icon
       slot="icon"

@@ -1,0 +1,32 @@
+page {
+  background-color: var(--theme-color);
+}
+@keyframes xin {
+  from {
+    opacity: 1;
+    transform: scale(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+#welcome {
+  position: relative;
+  height: 100vh;
+}
+#welcome #bear {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translateX(-50%);
+  width: 200rpx;
+}
+#welcome #bear #xin {
+  animation: xin 3s forwards;
+  z-index: 1;
+  position: absolute;
+  top: 170rpx;
+  left: 60rpx;
+  width: 100rpx;
+}

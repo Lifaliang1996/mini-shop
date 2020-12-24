@@ -133,6 +133,12 @@
           "pathName": "pages/pay/index",
           "query": "addr_id=1608809238837",
           "scene": null
+        },
+        {
+          "name": "关于",
+          "pathName": "pages/about/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

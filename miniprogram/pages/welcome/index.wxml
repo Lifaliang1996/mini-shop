@@ -1,0 +1,15 @@
+<view id="welcome">
+  <view id="bear">
+    <image
+      id="xiong"
+      mode="widthFix"
+      src="../../assets/images/xiong.png"
+    />
+    <image
+      id="xin"
+      mode="widthFix"
+      src="../../assets/images/xin.png"
+    />
+  </view>
+</view>
+
