@@ -1,2 +1,25 @@
-<!--miniprogram/pages/footmark/index.wxml-->
-<text>miniprogram/pages/footmark/index.wxml</text>
+<block wx:if="{{ goodsList.length }}">
+  <view
+    class="goods-item"
+    wx:for="{{ goodsList }}"
+    wx:key="goods_id"
+  >
+    <mp-slideview
+      buttons="{{ slideButtons }}"
+      data-id="{{ item.goods_id }}"
+      bind:buttontap="removeFootmark"
+    >
+      <ct-goods-card
+        round
+        goods="{{ item }}"
+        bind:navigate="toGoodsDetailPage"
+      />
+    </mp-slideview>
+  </view>
+</block>
+<van-empty
+  wx:else
+  image="../../../../assets/empty-icon/collect.png"
+  description="还没有喜欢的东西呢"
+/>
+

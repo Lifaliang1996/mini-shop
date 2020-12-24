@@ -1,66 +1,34 @@
-// miniprogram/pages/footmark/index.js
+import Footmark from '../../store/footmark/index'
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    goodsList: [],
+    slideButtons: [
+      {
+        type: 'warn',
+        text: '扫除足迹'
+      }
+    ]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad () {
+    this.updateFootmark()
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  updateFootmark () {
+    const goodsList = Footmark.getFootmark()
+    this.setData({
+      goodsList
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  removeFootmark (e) {
+    const goodsId = e.currentTarget.dataset.id
+    Footmark.removeFootmark(goodsId)
+    this.updateFootmark()
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  toGoodsDetailPage (e) {
+    wx.navigateTo({ url: `/pages/goods-detail/index?goods_id=${e.detail}` })
   }
 })

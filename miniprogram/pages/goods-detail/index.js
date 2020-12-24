@@ -1,6 +1,7 @@
 import request from '../../utils/request'
 import Cart from '../../store/cart/index'
 import User from '../../store/user/index'
+import Footmark from '../../store/footmark/index'
 
 Page({
   data: {
@@ -72,12 +73,21 @@ Page({
       })
 
       this.goodsRaw = goods
+      const { goods_name, goods_price, goods_small_logo } = goods
       this.setData({
-        goodsName: goods.goods_name,
-        goodsPrice: goods.goods_price,
+        goodsName: goods_name,
+        goodsPrice: goods_price,
         goodsPic: goods.pics.map(pic => pic.pics_big_url),
         goodsIntroduce: goods.goods_introduce,
         goodsAttrs: goods.attrs
+      })
+
+      // 添加足迹
+      Footmark.addFootmark({
+        goods_id,
+        goods_name,
+        goods_price,
+        goods_small_logo
       })
     } catch (error) {}
   },

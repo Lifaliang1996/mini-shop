@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "我的足迹",
+  "usingComponents": {
+    "van-empty": "@vant/weapp/empty/index",
+    "mp-slideview": "weui-miniprogram/slideview/slideview"
+  }
 }

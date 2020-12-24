@@ -10,7 +10,7 @@ Page({
         type: 'warn',
         text: '取消收藏'
       }
-    ],
+    ]
   },
 
   onLoad (options) {
@@ -28,7 +28,6 @@ Page({
   },
 
   async removeCollect (e) {
-    console.log(e)
     try {
       await wxp.showModal({ content: '是否移除此商品' })
       const goodsId = e.currentTarget.dataset.id

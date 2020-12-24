@@ -11,7 +11,11 @@
           data-id="{{ item.goods_id }}"
           bind:buttontap="removeCollect"
         >
-          <ct-goods-card round goods="{{ item }}" bind:navigate="toGoodsDetailPage" />
+          <ct-goods-card
+            round
+            goods="{{ item }}"
+            bind:navigate="toGoodsDetailPage"
+          />
         </mp-slideview>
       </view>
     </block>

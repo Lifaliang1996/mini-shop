@@ -1,4 +1,5 @@
 import User from '../../store/user/index'
+import Footmark from '../../store/footmark/index'
 
 Page({
   data: {
@@ -10,7 +11,10 @@ Page({
 
   onShow () {
     this.updateUserInfo()
-    this.updateCollect()
+    if (this.data.userInfo) {
+      this.updateCollect()
+    }
+    this.updateFootmark()
   },
 
   onShareAppMessage () {
@@ -34,6 +38,13 @@ Page({
     const collectGoodsNum = User.collect.getCollectList().length
     this.setData({
       collectGoodsNum
+    })
+  },
+
+  updateFootmark () {
+    const footmarkNum = Footmark.getFootmark().length
+    this.setData({
+      footmarkNum
     })
   },
 

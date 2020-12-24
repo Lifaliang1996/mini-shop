@@ -8,13 +8,11 @@ page {
   font-size: 26rpx;
   background-color: #fff;
   color: var(--text-gray);
-}
-#addr-wrap .addr {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-#addr-wrap .addr .iconfont {
+#addr-wrap .iconfont {
   font-size: 26rpx;
 }
 #goods-list {

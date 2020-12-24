@@ -121,6 +121,12 @@
           "pathName": "pages/collect/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "足迹",
+          "pathName": "pages/footmark/index",
+          "query": "",
+          "scene": null
         }
       ]
     }
