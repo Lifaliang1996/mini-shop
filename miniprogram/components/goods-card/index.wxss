@@ -1,0 +1,46 @@
+.goods-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 220rpx;
+  padding: 20rpx 15px;
+  background-color: #fff;
+  overflow: hidden;
+}
+.goods-card .goods-img {
+  width: 180rpx;
+  height: 180rpx;
+  margin: 0 20rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.goods-card .goods-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.goods-card .goods-info .goods-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 28rpx;
+}
+.goods-card .goods-info .goods-footer {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.goods-card .goods-info .goods-footer .price {
+  flex: 1;
+}
+.goods-card-border {
+  border-bottom: 1px solid #f8f8f8;
+}
+.goods-card-round {
+  border-radius: 20rpx;
+}

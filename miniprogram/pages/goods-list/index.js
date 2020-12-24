@@ -23,8 +23,11 @@ Page({
     // 空状态是否显示
     emptyShow: false,
     goodsList: [],
+    // 商品列表滚动距离
     scrollTop: 0,
-    isRefreshing: false
+    isRefreshing: false,
+    // 置顶按钮是否显示
+    btnTopShow: false
   },
 
   // 请求数据
@@ -167,10 +170,11 @@ Page({
     const key = e.detail
     if (!key) return
     this.resetData()
-    this.getGoodsList()
+    this.scrollToTop()
     this.setData({
       searchShow: false
     })
+    this.getGoodsList()
   },
 
   // 点击搜索 tag
@@ -179,7 +183,8 @@ Page({
     this.resetData()
     this.setData({
       searchKey: tag,
-      searchShow: false
+      searchShow: false,
+      scrollTop: 0
     })
     this.getGoodsList()
   },
@@ -218,11 +223,35 @@ Page({
   },
 
   // 排序方式发生改变
-  handleChange (e) {
+  handleSortTypeChange (e) {
     this.type = e.detail
-    this.sortGoodsList()
     this.setData({
       scrollTop: 0
     })
+    this.sortGoodsList()
+  },
+
+  // 滚动到顶部
+  scrollToTop () {
+    this.setData({
+      scrollTop: 0
+    })
+  },
+
+  handleScroll (e) {
+    const scrollTop = e.detail.scrollTop
+    if (scrollTop > 1000) {
+      this.setData({
+        btnTopShow: true
+      })
+    } else if (this.data.btnTopShow) {
+      this.setData({
+        btnTopShow: false
+      })
+    }
+  },
+
+  toGoodsDetailPage (e) {
+    wx.navigateTo({ url: `/pages/goods-detail/index?goods_id=${e.detail}` })
   }
 })

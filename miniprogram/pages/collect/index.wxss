@@ -1,1 +1,8 @@
-/* pages/collect/index.wxss */
+page {
+  background-color: var(--bg-gray);
+}
+
+.goods-item {
+  margin-top: 15rpx;
+  width: 100%;
+}

@@ -1,8 +1,10 @@
-<van-tabs sticky>
-  <van-tab name="daifukuan" title="待付款">内容 1</van-tab>
-  <van-tab name="dafahuo" title="待发货">内容 1</van-tab>
-  <van-tab name="daishouhuo" title="待收货">内容 1</van-tab>
-  <van-tab name="daipingjia" title="待评价">内容 1</van-tab>
-  <van-tab name="tuihuanhuo" title="退换货">内容 1</van-tab>
+<van-tabs sticky active="{{ activeType }}">
+  <van-tab name="quanbudingdan" title="全部"></van-tab>
+  <van-tab name="daifukuan" title="待付款"></van-tab>
+  <van-tab name="daishouhuo" title="待收货"></van-tab>
+  <van-tab name="daipingjia" title="待评价"></van-tab>
+  <van-tab name="tuihuanhuo" title="退换货"></van-tab>
 </van-tabs>
+
+<van-empty image="../../../../assets/empty-icon/order.png" description="还没有订单呢" />
 

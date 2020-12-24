@@ -53,37 +53,29 @@
     wx:for-item="goods"
     wx:key="goodsId"
   >
-    <view class="goods-card br-top br-bm">
+    <view class="goods-item">
       <mp-slideview
         buttons="{{ slideButtons }}"
-        data-id="{{ goods.goodsId }}"
+        data-id="{{ goods.goods_id }}"
         bind:buttontap="slideButtonTap"
       >
-        <view class="warp">
+        <ct-goods-card goods="{{ goods }}" bind:navigate="toGoodsDetailPage">
           <van-checkbox
-            class="check-box"
+            slot="left"
             value="{{ goods.checked }}"
-            data-id="{{ goods.goodsId }}"
+            data-id="{{ goods.goods_id }}"
             bind:change="changeGoodsChecked"
           />
-          <navigator class="img" url="/pages/goods-detail/index?goods_id={{ goods.goodsId }}">
-            <van-image fit="contain" src="{{ goods.pic }}" />
-          </navigator>
-          <view class="info">
-            <view class="title">{{ goods.name }}</view>
-            <view class="price-num-wrap">
-              <view class="price">{{ goods.price }}</view>
-              <van-stepper
-                class="num"
-                integer
-                long-press="{{ false }}"
-                value="{{ goods.num }}"
-                data-id="{{ goods.goodsId }}"
-                bind:change="changeGoodsNum"
-              />
-            </view>
-          </view>
-        </view>
+          <van-stepper
+            slot="footer"
+            class="num"
+            integer
+            long-press="{{ false }}"
+            value="{{ goods.num }}"
+            data-id="{{ goods.goods_id }}"
+            bind:change="changeGoodsNum"
+          />
+        </ct-goods-card>
       </mp-slideview>
     </view>
   </block>
@@ -94,7 +86,7 @@
   wx:if="{{ goodsList.length }}"
   price="{{ totalPrice * 100 }}"
   button-text="去结算({{ totalNum }})"
-  disabled="{{ !isLogin || !addressList.length }}"
+  disabled="{{ !isLogin || !totalNum || !currentAddr.id }}"
   bind:submit="onClickButton"
 >
   <navigator
@@ -105,7 +97,7 @@
   </navigator>
   <navigator
     slot="tip"
-    wx:elif="{{ !addressList.length }}"
+    wx:elif="{{ !currentAddr.id }}"
     url="/pages/address/index"
   >您还没有收货地址，点击前往添加收货地址
   </navigator>

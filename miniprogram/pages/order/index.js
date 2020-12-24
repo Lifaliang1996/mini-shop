@@ -1,7 +1,7 @@
 // pages/order/index.js
 Page({
   data: {
-    activeType: 'daifukuan'
+    activeType: 'quanbudingdan'
   },
 
   onLoad (options) {

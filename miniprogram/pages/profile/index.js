@@ -1,16 +1,16 @@
 import User from '../../store/user/index'
-import wxp from '../../utils/wxp'
 
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
-    userInfo: null
+    userInfo: null,
+    collectGoodsNum: 0,
+    collectShopNum: 0,
+    footmarkNum: 0
   },
 
   onShow () {
-    this.initUserInfo()
+    this.updateUserInfo()
+    this.updateCollect()
   },
 
   onShareAppMessage () {
@@ -21,7 +21,7 @@ Page({
     }
   },
 
-  initUserInfo () {
+  updateUserInfo () {
     const userInfo = User.userInfo.getUserInfo()
     if (userInfo) {
       this.setData({
@@ -30,20 +30,37 @@ Page({
     }
   },
 
-  async toOrderPage (e) {
-    try {
-      if (!this.data.userInfo) {
-        await wxp.showModal({
-          content: '登录后可查看订单'
-        })
-        wx.navigateTo({ url: '/pages/login/index' })
-      } else {
-        const { type } = e.currentTarget.dataset
-        wx.navigateTo({
-          url: `/pages/order/index?type=${type}`
-        })
-      }
-    } catch (error) {}
+  updateCollect () {
+    const collectGoodsNum = User.collect.getCollectList().length
+    this.setData({
+      collectGoodsNum
+    })
+  },
+
+  toOrderPage (e) {
+    if (!this.data.userInfo) {
+      wx.navigateTo({ url: '/pages/login/index' })
+    } else {
+      const { type } = e.currentTarget.dataset
+      wx.navigateTo({
+        url: `/pages/order/index?type=${type}`
+      })
+    }
+  },
+
+  toCollectPage (e) {
+    if (!this.data.userInfo) {
+      wx.navigateTo({ url: '/pages/login/index' })
+    } else {
+      const { type } = e.currentTarget.dataset
+      wx.navigateTo({
+        url: `/pages/collect/index?type=${type}`
+      })
+    }
+  },
+
+  toFootmarkPage () {
+    wx.navigateTo({ url: '/pages/footmark/index'} )
   },
 
   // 拨打客服电话

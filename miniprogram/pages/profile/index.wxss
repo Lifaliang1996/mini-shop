@@ -1,17 +1,28 @@
 #user-header {
-  position: relative;
-  padding: 50rpx 15px 140rpx 15px;
+  padding: 50rpx 15px 120rpx 15px;
   background-color: var(--theme-color);
   border-radius: 0 0 50rpx 50rpx;
-  margin-bottom: 140rpx;
+  overflow: hidden;
 }
-.user-info {
+#user-header .icon-xiong {
+  z-index: 1;
+  pointer-events: none;
+  position: absolute;
+  top: 100rpx;
+  right: -80rpx;
+  opacity: 0.1;
+  transform: rotate(-20deg);
+  line-height: 500rpx;
+  font-size: 500rpx;
+  color: #fff;
+}
+#user-info {
   display: flex;
   align-items: center;
   height: 100rpx;
   color: #fff;
 }
-.user-info .avatar {
+#user-info .avatar {
   width: 100rpx;
   height: 100rpx;
   margin-right: 30rpx;
@@ -21,64 +32,77 @@
   line-height: 100rpx;
   overflow: hidden;
 }
-.user-info .avatar .icon-logo {
+#user-info .avatar .icon-logo {
   font-size: 100rpx;
   color: #d1d1d1;
 }
-.user-info .login-tip {
+#user-info .login-tip {
   padding: 5rpx 20rpx;
   background-color: rgba(119, 119, 119, 0.2);
   border-radius: 30rpx;
 }
-.user-info .personal-wrap {
+#user-info .personal-wrap {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
 }
-.user-info .personal-wrap .name {
+#user-info .personal-wrap .name {
   padding: 0 10rpx;
   font-size: 36rpx;
 }
-.user-info .personal-wrap .tips {
+#user-info .personal-wrap .tips {
   font-size: 20rpx;
 }
-.user-info .personal-wrap .tips .tip {
+#user-info .personal-wrap .tips .tip {
   padding: 4rpx 20rpx;
   border-radius: 20rpx;
   background-color: rgba(119, 119, 119, 0.2);
 }
-.order-wrap {
-  position: absolute;
-  left: 15px;
-  right: 15px;
-  bottom: 0;
-  transform: translateY(50%);
-  z-index: 1;
+#collect-info {
   display: flex;
+  margin-top: 30rpx;
+  color: #fff;
+}
+#collect-info .col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#collect-info .col .col-num {
+  font-size: 38rpx;
+}
+#collect-info .col .col-name {
+  font-size: 30rpx;
+}
+#order-wrap {
+  display: flex;
+  margin: 0 15px;
   padding: 20rpx 10rpx;
+  transform: translateY(-50%);
   border-radius: 20rpx;
   background-color: #fff;
   box-shadow: 0 0 20rpx rgba(41, 41, 41, 0.2);
 }
-.order-wrap .ord {
+#order-wrap .ord {
   flex: 1;
   display: flex;
   flex-direction: column;
   text-align: center;
   color: var(--text-gray);
 }
-.order-wrap .ord .icon {
+#order-wrap .ord .iconfont {
   line-height: 60rpx;
   font-size: 60rpx;
 }
-.order-wrap .ord .title {
+#order-wrap .ord .title {
   font-size: 28rpx;
 }
-.activity-wrap .van-icon {
+#activity-wrap .van-icon {
   margin-right: 15rpx;
 }
-.activity-wrap .act-btn {
+#activity-wrap .act-btn {
   height: 100%;
   padding: 0;
   background-color: transparent;

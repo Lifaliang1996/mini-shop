@@ -1,6 +1,6 @@
 <view id="user-header">
   <!-- 个人信息 -->
-  <view class="user-info">
+  <view id="user-info">
     <view class="avatar">
       <image wx:if="{{ userInfo }}" src="{{ userInfo.avatarUrl }}" />
       <text wx:else class="iconfont icon-logo"></text>
@@ -19,58 +19,84 @@
     </navigator>
   </view>
 
-  <!-- 订单管理 -->
-  <view class="order-wrap">
+  <!-- 收藏 -->
+  <view id="collect-info">
     <view
-      class="ord"
-      hover-class="navigator-hover"
-      data-type="daifukuan"
-      bind:tap="toOrderPage"
+      class="col"
+      data-type="goods"
+      bind:tap="toCollectPage"
     >
-      <text class="icon iconfont icon-daifukuan"></text>
-      <text class="title">待付款</text>
+      <text class="col-num">{{ collectGoodsNum || '-' }}</text>
+      <text class="col-name">商品收藏</text>
     </view>
     <view
-      class="ord"
-      hover-class="navigator-hover"
-      data-type="daifahuo"
-      bind:tap="toOrderPage"
+      class="col"
+      data-type="shop"
+      bind:tap="toCollectPage"
     >
-      <text class="icon iconfont icon-daifahuo"></text>
-      <text class="title">待发货</text>
+      <text class="col-num">{{ collectShopNum || '-' }}</text>
+      <text class="col-name">店铺收藏</text>
     </view>
-    <view
-      class="ord"
-      hover-class="navigator-hover"
-      data-type="daishouhuo"
-      bind:tap="toOrderPage"
-    >
-      <text class="icon iconfont icon-daishouhuo"></text>
-      <text class="title">待收货</text>
+    <view class="col" bind:tap="toFootmarkPage">
+      <text class="col-num">{{ footmarkNum || '-' }}</text>
+      <text class="col-name">我的足迹</text>
     </view>
-    <view
-      class="ord"
-      hover-class="navigator-hover"
-      data-type="daipingjia"
-      bind:tap="toOrderPage"
-    >
-      <text class="icon iconfont icon-daipingjia"></text>
-      <text class="title">待评价</text>
-    </view>
-    <view
-      class="ord"
-      hover-class="navigator-hover"
-      data-type="tuihuanhuo"
-      bind:tap="toOrderPage"
-    >
-      <text class="icon iconfont icon-tuihuanhuo"></text>
-      <text class="title">退换货</text>
-    </view>
+  </view>
+
+  <view class="iconfont icon-xiong"></view>
+</view>
+
+<!-- 订单管理 -->
+<view id="order-wrap">
+  <view
+    class="ord"
+    hover-class="navigator-hover"
+    data-type="daifukuan"
+    bind:tap="toOrderPage"
+  >
+    <text class="icon iconfont icon-daifukuan"></text>
+    <text class="title">待付款</text>
+  </view>
+  <view
+    class="ord"
+    hover-class="navigator-hover"
+    data-type="daishouhuo"
+    bind:tap="toOrderPage"
+  >
+    <text class="icon iconfont icon-daishouhuo"></text>
+    <text class="title">待收货</text>
+  </view>
+  <view
+    class="ord"
+    hover-class="navigator-hover"
+    data-type="daipingjia"
+    bind:tap="toOrderPage"
+  >
+    <text class="icon iconfont icon-daipingjia"></text>
+    <text class="title">待评价</text>
+  </view>
+  <view
+    class="ord"
+    hover-class="navigator-hover"
+    data-type="tuihuanhuo"
+    bind:tap="toOrderPage"
+  >
+    <text class="icon iconfont icon-tuihuanhuo"></text>
+    <text class="title">退换货</text>
+  </view>
+  <view
+    class="ord"
+    hover-class="navigator-hover"
+    data-type="quanbudingdan"
+    bind:tap="toOrderPage"
+  >
+    <text class="iconfont icon-quanbudingdan"></text>
+    <text class="title">全部订单</text>
   </view>
 </view>
 
 <!-- 个人选项 -->
-<view class="activity-wrap">
+<view id="activity-wrap">
   <van-cell
     wx:if="{{ userInfo }}"
     title="收货地址管理"

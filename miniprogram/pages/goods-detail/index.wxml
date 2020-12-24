@@ -1,3 +1,12 @@
+<ct-navigation-bar
+  back
+  home
+  search-bar
+  bind:back="backPage"
+  bind:home="toHomePage"
+  bind:search="toGoodsListPage"
+/>
+
 <!-- 轮播图 -->
 <swiper
   id="swiper"
@@ -19,8 +28,18 @@
 <view id="base-info">
   <view class="top-wrap">
     <view class="price">{{ goodsPrice }}</view>
-    <view class="favor">
-      <van-icon class="icon" name="like-o" />
+    <view class="favor" bind:tap="addOrRemoveCollect">
+      <van-icon
+        wx:if="{{ isCollected }}"
+        class="icon"
+        name="like"
+        color="var(--theme-color)"
+      />
+      <van-icon
+        wx:else
+        class="icon"
+        name="like-o"
+      />
       <text class="text">收藏</text>
     </view>
   </view>
@@ -71,4 +90,10 @@
   />
   <van-goods-action-button text="立即购买" />
 </van-goods-action>
+
+<view
+  hidden="{{ !btnTopShow }}"
+  class="btn-top iconfont icon-top"
+  bind:tap="scrollToTop"
+></view>
 

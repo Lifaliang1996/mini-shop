@@ -1,0 +1,17 @@
+<view class="goods-card {{ border ? 'goods-card-border' : '' }} {{ round ? 'goods-card-round' : '' }}">
+  <slot name="left"></slot>
+  <image
+    class="goods-img"
+    mode="aspectFit"
+    src="{{ goods.goods_small_logo }}"
+    bind:tap="emitNavigate"
+  />
+  <view class="goods-info">
+    <view class="goods-title" bind:tap="emitNavigate">{{ goods.goods_name }}</view>
+    <view class="goods-footer">
+      <view class="price" bind:tap="emitNavigate">{{ goods.goods_price }}</view>
+      <slot name="footer"></slot>
+    </view>
+  </view>
+</view>
+

@@ -15,10 +15,8 @@ function saveCartToLocal () {
  */
 function getCartByLocal () {
   try {
-    return wx.getStorageSync(CART_KEY) || []
-  } catch (error) {
-    return []
-  }
+    return wx.getStorageSync(CART_KEY)
+  } catch (error) {}
 }
 
 /**
@@ -34,7 +32,7 @@ function getCart () {
  * @param {object} goods 添加的商品
  */
 function addGoods (goods) {
-  const oldGoods = cart.find(g => g.goodsId === goods.goodsId)
+  const oldGoods = cart.find(g => g.goods_id === goods.goods_id)
 
   if (oldGoods) {
     // 购物车中已有，增加数量
@@ -60,7 +58,7 @@ function addGoods (goods) {
  * @param {number | string} goodsId
  */
 function removeGoods (goodsId) {
-  const index = cart.findIndex(g => g.goodsId === goodsId)
+  const index = cart.findIndex(g => g.goods_id === goodsId)
   if (index !== -1) {
     cart.splice(index, 1)
     saveCartToLocal()
@@ -73,7 +71,7 @@ function removeGoods (goodsId) {
  * @param {number} newNum
  */
 function changeNum (goodsId, newNum) {
-  const oldGoods = cart.find(g => g.goodsId === goodsId)
+  const oldGoods = cart.find(g => g.goods_id === goodsId)
   if (oldGoods) {
     oldGoods.num = newNum
     saveCartToLocal()
@@ -85,7 +83,7 @@ function changeNum (goodsId, newNum) {
  * @param {number | string} goodsId
  */
 function changeChecked (goodsId) {
-  const oldGoods = cart.find(g => g.goodsId === goodsId)
+  const oldGoods = cart.find(g => g.goods_id === goodsId)
   if (oldGoods) {
     oldGoods.checked = !oldGoods.checked
     saveCartToLocal()
@@ -102,7 +100,7 @@ function changeCheckedAll (value) {
 }
 
 // 内部维护的购物车数据
-const cart = getCartByLocal()
+const cart = getCartByLocal() || []
 
 export default {
   getCart,

@@ -1,5 +1,5 @@
 <!-- 地址列表 -->
-<view id="addr-list">
+<view wx:if="{{ addrList.length }}" id="addr-list">
   <van-swipe-cell
     wx:for="{{ addrList }}"
     wx:for-item="addr"
@@ -33,6 +33,11 @@
     </view>
   </van-swipe-cell>
 </view>
+<van-empty
+  wx:else
+  image="../../../../assets/empty-icon/address.png"
+  description="还没有您的地址呢"
+/>
 
 <!-- 新增按钮 -->
 <view id="add-btns">

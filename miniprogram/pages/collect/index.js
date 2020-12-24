@@ -1,66 +1,43 @@
-// pages/collect/index.js
+import User from '../../store/user/index'
+import wxp from '../../utils/wxp'
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    activeType: 'goods',
+    goodsList: [],
+    slideButtons: [
+      {
+        type: 'warn',
+        text: '取消收藏'
+      }
+    ],
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad (options) {
+    this.setData({
+      activeType: options.type
+    })
+    this.updateCollect()
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  updateCollect () {
+    const goodsList = User.collect.getCollectList()
+    this.setData({
+      goodsList
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  async removeCollect (e) {
+    console.log(e)
+    try {
+      await wxp.showModal({ content: '是否移除此商品' })
+      const goodsId = e.currentTarget.dataset.id
+      User.collect.removeCollect(goodsId)
+      this.updateCollect()
+    } catch (error) {}
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  toGoodsDetailPage (e) {
+    wx.navigateTo({ url: `/pages/goods-detail/index?goods_id=${e.detail}` })
   }
 })

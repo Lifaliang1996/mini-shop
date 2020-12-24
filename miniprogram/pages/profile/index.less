@@ -1,12 +1,23 @@
 #user-header {
-  position: relative;
-  padding: 50rpx 15px 140rpx 15px;
+  padding: 50rpx 15px 120rpx 15px;
   background-color: var(--theme-color);
   border-radius: 0 0 50rpx 50rpx;
-  margin-bottom: 140rpx;
+  overflow: hidden;
+  .icon-xiong {
+    z-index: 1;
+    pointer-events: none;
+    position: absolute;
+    top: 100rpx;
+    right: -80rpx;
+    opacity: .1;
+    transform: rotate(-20deg);
+    line-height: 500rpx;
+    font-size: 500rpx;
+    color: #fff;
+  }
 }
 
-.user-info {
+#user-info {
   display: flex;
   align-items: center;
   height: 100rpx;
@@ -56,15 +67,29 @@
   }
 }
 
-.order-wrap {
-  position: absolute;
-  left: 15px;
-  right: 15px;
-  bottom: 0;
-  transform: translateY(50%);
-  z-index: 1;
+#collect-info {
   display: flex;
+  margin-top: 30rpx;
+  color: #fff;
+  .col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .col-num {
+      font-size: 38rpx;
+    }
+    .col-name {
+      font-size: 30rpx;
+    }
+  }
+}
+
+#order-wrap {
+  display: flex;
+  margin: 0 15px;
   padding: 20rpx 10rpx;
+  transform: translateY(-50%);
   border-radius: 20rpx;
   background-color: #fff;
   box-shadow: 0 0 20rpx rgba(41, 41, 41, 0.2);
@@ -76,7 +101,7 @@
     text-align: center;
     color: var(--text-gray);
 
-    .icon {
+    .iconfont {
       line-height: 60rpx;
       font-size: 60rpx;
     }
@@ -87,7 +112,7 @@
   }
 }
 
-.activity-wrap {
+#activity-wrap {
 
   .van-icon {
     margin-right: 15rpx;

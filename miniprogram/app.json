@@ -12,10 +12,12 @@
     "pages/login/index",
     "pages/address/index",
     "pages/pay/index",
-    "pages/address-edit/index"
+    "pages/address-edit/index",
+    "pages/footmark/index"
   ],
   "usingComponents": {
-    "ct-navigation-bar": "./components/navigation-bar/index"
+    "ct-navigation-bar": "./components/navigation-bar/index",
+    "ct-goods-card": "./components/goods-card/index"
   },
   "window": {
     "navigationBarBackgroundColor": "#fff",

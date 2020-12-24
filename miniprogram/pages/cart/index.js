@@ -77,7 +77,7 @@ Page({
     goodsList.forEach(goods => {
       if (goods.checked) {
         totalNum += goods.num
-        totalPrice += goods.price * goods.num
+        totalPrice += goods.goods_price * goods.num
       }
     })
 
@@ -121,5 +121,9 @@ Page({
       Cart.removeGoods(goodsId)
       this.updateData()
     } catch (error) {}
+  },
+
+  toGoodsDetailPage (e) {
+    wx.navigateTo({ url: `/pages/goods-detail/index?goods_id=${e.detail}` })
   }
 })

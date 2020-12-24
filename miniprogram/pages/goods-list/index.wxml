@@ -1,4 +1,4 @@
-<ct-navigation-bar back="{{ !searchShow }}" bind:back="handleBack">
+<ct-navigation-bar back bind:back="handleBack">
   <view slot="left"></view>
   <van-search
     slot="center"
@@ -41,35 +41,37 @@
 />
 
 <!-- 排序筛选 商品列表 -->
-<view hidden="{{ searchShow || !goodsList.length }}">
-  <ct-sort-bar bind:change="handleChange" />
+<view hidden="{{ searchShow || !goodsList.length }}" id="goods-wrap">
+  <ct-sort-bar bind:change="handleSortTypeChange" />
   <scroll-view
     id="goods-list"
-    enable-back-to-top
     scroll-y
+    enable-back-to-top
+    scroll-with-animation
     refresher-enabled
+    enhanced
     scroll-top="{{ scrollTop }}"
     refresher-triggered="{{ isRefreshing }}"
+    bind:scroll="handleScroll"
     bind:refresherrefresh="refreshGoodsList"
     bind:scrolltolower="getMoreGoodsList"
   >
-    <navigator
-      class="goods-item"
+    <ct-goods-card
       wx:for="{{ goodsList }}"
       wx:for-item="goods"
       wx:key="goods_id"
-      url="/pages/goods-detail/index?goods_id={{ goods.goods_id }}"
+      border
+      goods="{{ goods }}"
+      bind:navigate="toGoodsDetailPage"
     >
-      <van-image
-        class="img"
-        fit="contain"
-        src="{{ goods.goods_small_logo }}"
-      />
-      <view class="info">
-        <view class="title">{{ goods.goods_name }}</view>
-        <view class="price">{{ goods.goods_price }}</view>
-      </view>
-    </navigator>
+    </ct-goods-card>
   </scroll-view>
+</view>
+
+<view
+  hidden="{{ !btnTopShow }}"
+  class="btn-top iconfont icon-top"
+  bind:tap="scrollToTop"
+>
 </view>
 

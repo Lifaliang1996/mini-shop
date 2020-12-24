@@ -52,3 +52,15 @@ button.danger {
   border-bottom-left-radius: 20rpx;
   border-bottom-right-radius: 20rpx;
 }
+
+
+.btn-top {
+  position: fixed;
+  right: 0;
+  bottom: 160rpx;
+  padding: 20rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 20rpx 0 0 20rpx;
+  color: #fff;
+  font-size: 60rpx;
+}
