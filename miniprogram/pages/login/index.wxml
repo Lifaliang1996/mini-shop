@@ -9,9 +9,11 @@
     title-width="120rpx"
     clearable
     border
+    error-message="{{ isValid ? '' : '手机号类型错误' }}"
+    bind:blur="checkPhone"
   />
   <van-field
-    value="{{ password }}"
+    model:value="{{ password }}"
     label="密码"
     placeholder="请输入密码"
     title-width="120rpx"
@@ -24,7 +26,12 @@
 </view>
 
 <view class="login-btn">
-  <van-button class="login-btn" type="danger">
+  <van-button
+    class="login-btn"
+    disabled="{{ disabled && !password }}"
+    type="danger"
+    bind:tap="loginByPhone"
+  >
     登 录
   </van-button>
 </view>
