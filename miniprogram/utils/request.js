@@ -13,9 +13,9 @@ export default function request (params) {
       })
     }
     wx.request({
+      method: 'GET',
       ...params,
       url: BASEURL + params.url,
-      method: 'GET',
       success: result => {
         const {data} = result
         if (data.meta.status === 200) {
