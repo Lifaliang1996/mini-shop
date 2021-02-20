@@ -35,7 +35,7 @@
 
 <!-- 空状态 -->
 <van-empty
-  wx:if="{{ emptyShow }}"
+  wx:if="{{ emptyShow && !searchShow }}"
   image="../../../../assets/empty-icon/search.png"
   description="还没有相关商品呢 o(╥﹏╥)o"
 />
